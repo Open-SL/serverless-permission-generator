@@ -2,15 +2,18 @@
   "name": "serverless-project",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/serverless-permission-generator",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "fontsource-roboto": "^2.1.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "typeface-metropolis": "0.0.74"
   },
   "scripts": {
     "start": "react-scripts start",
