@@ -1,5 +1,4 @@
 import React from "react";
-//import logo from './logo.svg';
 import "./App.css";
 import { TextField, Typography, Grid, Button, Box } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -9,7 +8,7 @@ import {
   createMuiTheme,
 } from "@material-ui/core/styles";
 import GetAppIcon from "@material-ui/icons/GetApp";
-import FileCopyIcon from '@material-ui/icons/FileCopy';
+import FileCopyIcon from "@material-ui/icons/FileCopy";
 
 const fontFamilyMetropolis = {
   fontFamily: [
@@ -25,7 +24,6 @@ const fontFamilyMetropolis = {
 
 const theme = createMuiTheme({
   typography: {
-    // fontFamily: ['Merriweather', 'Georgia', 'serif'].join(','),
     h1: {
       ...fontFamilyMetropolis,
     },
@@ -44,9 +42,6 @@ const theme = createMuiTheme({
     h6: {
       ...fontFamilyMetropolis,
     },
-    // body1: {
-    //   ...fontFamilyMetropolis,
-    // },
     subtitle1: {
       ...fontFamilyMetropolis,
     },
@@ -54,22 +49,12 @@ const theme = createMuiTheme({
       ...fontFamilyMetropolis,
     },
   },
-  // palette: {
-  //   type: 'dark',
-  //   primary: {
-  //     main: #BB86FC,
-  //     // contrastText: '#fff',
-  //   },
-  // },
 });
 
 const useStyles = makeStyles({
   subheading: {
-    // textDecorationColor: "#fd5750",
     color: "#fd5750",
     fontWeight: "800",
-
-    // textDecoration: "underline",
   },
   button: {
     borderRadius: 5,
@@ -88,12 +73,6 @@ const useStyles = makeStyles({
   },
   header: {
     backgroundColor: "#282c34",
-    // min-height: 10vh;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-    // font-size: calc(20px + 2vmin);
     color: "white",
     textAlign: "center",
   },
@@ -168,8 +147,7 @@ function App() {
                     variant="subtitle1"
                     className={classes.fieldTitle}
                   >
-                    {" "}
-                    AWS Account ID{" "}
+                    AWS Account ID
                   </Typography>
                 </Grid>
                 <Grid item xs>
@@ -193,8 +171,7 @@ function App() {
                     variant="subtitle1"
                     className={classes.fieldTitle}
                   >
-                    {" "}
-                    AWS Region{" "}
+                    AWS Region
                   </Typography>
                 </Grid>
                 <Grid item xs>
@@ -218,8 +195,7 @@ function App() {
                     variant="subtitle1"
                     className={classes.fieldTitle}
                   >
-                    {" "}
-                    Application Stage{" "}
+                    Application Stage
                   </Typography>
                 </Grid>
                 <Grid item xs>
