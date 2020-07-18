@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/serverless-permission-generator/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/serverless-permission-generator/static/js/main.cdc0ffd1.chunk.js",
-    "main.js.map": "/serverless-permission-generator/static/js/main.cdc0ffd1.chunk.js.map",
+    "main.js": "/serverless-permission-generator/static/js/main.32f44edc.chunk.js",
+    "main.js.map": "/serverless-permission-generator/static/js/main.32f44edc.chunk.js.map",
     "runtime-main.js": "/serverless-permission-generator/static/js/runtime-main.b4a98222.js",
     "runtime-main.js.map": "/serverless-permission-generator/static/js/runtime-main.b4a98222.js.map",
     "static/css/2.cb75adce.chunk.css": "/serverless-permission-generator/static/css/2.cb75adce.chunk.css",
-    "static/js/2.6626006c.chunk.js": "/serverless-permission-generator/static/js/2.6626006c.chunk.js",
-    "static/js/2.6626006c.chunk.js.map": "/serverless-permission-generator/static/js/2.6626006c.chunk.js.map",
+    "static/js/2.9f497cb0.chunk.js": "/serverless-permission-generator/static/js/2.9f497cb0.chunk.js",
+    "static/js/2.9f497cb0.chunk.js.map": "/serverless-permission-generator/static/js/2.9f497cb0.chunk.js.map",
     "index.html": "/serverless-permission-generator/index.html",
-    "precache-manifest.bb22ea0687fc6b1e5670c41327ed89d0.js": "/serverless-permission-generator/precache-manifest.bb22ea0687fc6b1e5670c41327ed89d0.js",
+    "precache-manifest.c561e9928602ec98b4ea7d016e698cb1.js": "/serverless-permission-generator/precache-manifest.c561e9928602ec98b4ea7d016e698cb1.js",
     "service-worker.js": "/serverless-permission-generator/service-worker.js",
     "static/css/2.cb75adce.chunk.css.map": "/serverless-permission-generator/static/css/2.cb75adce.chunk.css.map",
     "static/css/main.5ecd60fb.chunk.css.map": "/serverless-permission-generator/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.6626006c.chunk.js.LICENSE.txt": "/serverless-permission-generator/static/js/2.6626006c.chunk.js.LICENSE.txt",
+    "static/js/2.9f497cb0.chunk.js.LICENSE.txt": "/serverless-permission-generator/static/js/2.9f497cb0.chunk.js.LICENSE.txt",
     "static/media/index.css": "/serverless-permission-generator/static/media/roboto-latin-900-normal.bb1e4dc6.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.b4a98222.js",
     "static/css/2.cb75adce.chunk.css",
-    "static/js/2.6626006c.chunk.js",
+    "static/js/2.9f497cb0.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.cdc0ffd1.chunk.js"
+    "static/js/main.32f44edc.chunk.js"
   ]
 }

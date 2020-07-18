@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/serverless-permission-generator/precache-manifest.bb22ea0687fc6b1e5670c41327ed89d0.js"
+  "/serverless-permission-generator/precache-manifest.c561e9928602ec98b4ea7d016e698cb1.js"
 );
 
 self.addEventListener('message', (event) => {
