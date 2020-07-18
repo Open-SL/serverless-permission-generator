@@ -5,6 +5,7 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import { Formik, Form as FormikForm, Field } from 'formik';
 import { TextField, Checkbox } from 'formik-material-ui';
 import ResourcesArray from './ResourcesArray';
+import validation from 'validation';
 
 const useStyles = makeStyles({
   subheading: {
@@ -35,17 +36,26 @@ export default function Form() {
     <>
       <Formik
         initialValues={{
-          s3: false,
-          sns: false,
-          ec2Sg: false,
-          ses: false,
-          dynamodb: false,
+          projectName: '',
+          accountId: '',
+          stage: '',
+          region: '',
+          isS3Required: false,
+          isSnsRequired: false,
+          isSqsRequired: false,
+          isApiGWRequired: false,
+          isSgRequired: false,
+          isKinesisRequired: false,
+          isAlbRequired: false,
+          isDynamoDbRequired: false,
           s3Array: [],
           dynamoDbArray: [],
-          sesArray: [],
+          sqsArray: [],
+          albArray: [],
+          kinesisArray: [],
           snsArray: [],
-          ec2SgArray: [],
         }}
+        validate={validation}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             setSubmitting(false);
@@ -114,14 +124,56 @@ export default function Form() {
               <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
                 <Grid item xs={8}>
                   <Typography variant="subtitle1" className={classes.fieldTitle}>
+                    Amazon API Gateway
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isApiGWRequired"
+                    inputProps={{ 'aria-label': 'security checkbox' }}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
+                <Grid item xs={8}>
+                  <Typography variant="subtitle1" className={classes.fieldTitle}>
+                    EC2 (Elastic Compute Cloud) Security Groups
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isSgRequired"
+                    inputProps={{ 'aria-label': 'security checkbox' }}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
+                <Grid item xs={8}>
+                  <Typography variant="subtitle1" className={classes.fieldTitle}>
                     S3 (Simple Static Storage)
                   </Typography>
                 </Grid>
                 <Grid item xs>
-                  <Field component={Checkbox} type="checkbox" name="s3" inputProps={{ 'aria-label': 's3 checkbox' }} />
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isS3Required"
+                    inputProps={{ 'aria-label': 's3 checkbox' }}
+                  />
                 </Grid>
                 <Grid item xs={12}>
-                  <ResourcesArray values={values} resourceName="s3" arrayName="s3Array" resourceAddLabel="add bucket" />
+                  <ResourcesArray
+                    values={values}
+                    resourceName="isS3Required"
+                    arrayName="s3Array"
+                    resourceAddLabel="add bucket"
+                  />
                 </Grid>
               </Grid>
 
@@ -135,14 +187,14 @@ export default function Form() {
                   <Field
                     component={Checkbox}
                     type="checkbox"
-                    name="dynamodb"
+                    name="isDynamoDbRequired"
                     inputProps={{ 'aria-label': 'dynamoDB checkbox' }}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
-                    resourceName="dynamodb"
+                    resourceName="isDynamoDbRequired"
                     arrayName="dynamoDbArray"
                     resourceAddLabel="add db"
                   />
@@ -159,14 +211,14 @@ export default function Form() {
                   <Field
                     component={Checkbox}
                     type="checkbox"
-                    name="sns"
+                    name="isSnsRequired"
                     inputProps={{ 'aria-label': 'sns checkbox' }}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
-                    resourceName="sns"
+                    resourceName="isSnsRequired"
                     arrayName="snsArray"
                     resourceAddLabel="add topic"
                   />
@@ -176,42 +228,71 @@ export default function Form() {
               <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
                 <Grid item xs={8}>
                   <Typography variant="subtitle1" className={classes.fieldTitle}>
-                    SES (Simple Email Service)
+                    ALB (Application Load Balancer)
                   </Typography>
                 </Grid>
                 <Grid item xs>
                   <Field
                     component={Checkbox}
                     type="checkbox"
-                    name="ses"
-                    inputProps={{ 'aria-label': 'ses checkbox' }}
+                    name="isAlbRequired"
+                    inputProps={{ 'aria-label': 'alb checkbox' }}
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <ResourcesArray values={values} resourceName="ses" arrayName="sesArray" resourceAddLabel="add ses" />
+                  <ResourcesArray
+                    values={values}
+                    resourceName="isAlbRequired"
+                    arrayName="albArray"
+                    resourceAddLabel="add listener"
+                  />
                 </Grid>
               </Grid>
 
               <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
                 <Grid item xs={8}>
                   <Typography variant="subtitle1" className={classes.fieldTitle}>
-                    EC2 (Elastic Compute Cloud) Security Groups
+                    Amazon Kinesis
                   </Typography>
                 </Grid>
                 <Grid item xs>
                   <Field
                     component={Checkbox}
                     type="checkbox"
-                    name="ec2Sg"
+                    name="isKinesisRequired"
                     inputProps={{ 'aria-label': 'security checkbox' }}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
-                    resourceName="ec2Sg"
-                    arrayName="ec2SgArray"
-                    resourceAddLabel="add security group"
+                    resourceName="isKinesisRequired"
+                    arrayName="kinesisArray"
+                    resourceAddLabel="add stream"
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
+                <Grid item xs={8}>
+                  <Typography variant="subtitle1" className={classes.fieldTitle}>
+                    SQS (Simple Queue Service)
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isSqsRequired"
+                    inputProps={{ 'aria-label': 'security checkbox' }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <ResourcesArray
+                    values={values}
+                    resourceName="isSqsRequired"
+                    arrayName="sqsArray"
+                    resourceAddLabel="add queue"
                   />
                 </Grid>
               </Grid>
