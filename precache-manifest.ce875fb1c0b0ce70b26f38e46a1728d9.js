@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "798d58ab0ede318f3ab01e1223c30f0d",
+    "revision": "f3bb6bb17f450412179b2ececd10f57f",
     "url": "/serverless-permission-generator/index.html"
   },
   {
