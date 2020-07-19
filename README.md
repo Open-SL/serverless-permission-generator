@@ -1,68 +1,63 @@
 # Serverless Permission Policy Generator
 
-## Available Scripts
+An Online Application to generate AWS IAM permissions to deploy Serverless Framework in you cloud.
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+This application will provide you a user friendly UI to collect required resources details and a generator to build the relevant IAM policy for the collected information. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Visit the application from [here](https://open-sl.github.io/serverless-permission-generator/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Available Features
 
-### `npm test`
+1. Basic permissions required for serverless application to be deployed
+2. S3 buckets created from serverless yaml
+3. SNS topics
+4. SQS
+5. Api Gateway if required
+6. Security group and VPC configuration related permission to connect to VPN
+7. Kinesis
+8. DynamoDB 
+9. ALB listener and target group attachment permission required for lambdas exposed through ALBs.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to use
 
-### `npm run build`
+1. Enter project details and AWS account details
+2. Input required AWS resources details
+3. Click generate button
+4. Check the generated JSON
+5. Click copy button to copy values to clipboard
+6. Paste values in your IAM role permission policy
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Development Guide
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Prerequisites
+- git
+- npm
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+clone the application and install dependencies using
 
-### `npm run eject`
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+run
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+to deploy application in localhost.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contributing
 
-## Learn More
+- We would greatly appreciate any [contribution](CONTRIBUTING.md) you make.
+- If you have ideas for more functionality or recipes that should be on this project, l[let us know](https://github.com/Open-SL/serverless-permission-generator/issues).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Project Maintainers
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Nadun Indunil - [nadunindunil](https://github.com/nadunindunil)
+- Sachintha Sandeepani - [sachintha97](https://github.com/sachintha97)
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+Serverless Permission Policy Generator is under the MIT license. See the [License](LICENSE) for more information.
