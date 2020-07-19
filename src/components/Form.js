@@ -1,11 +1,11 @@
 import React from 'react';
 import { Typography, Grid, Button, Box, makeStyles } from '@material-ui/core';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
+import BuildIcon from '@material-ui/icons/Build';
 import { Formik, Form as FormikForm, Field } from 'formik';
 import { TextField, Checkbox } from 'formik-material-ui';
 import ResourcesArray from './ResourcesArray';
 import validation from 'validation';
+import generator from 'generator';
 
 const useStyles = makeStyles({
   subheading: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Form() {
+export default function Form({ setPolicy }) {
   const classes = useStyles();
 
   return (
@@ -57,10 +57,8 @@ export default function Form() {
         }}
         validate={validation}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            setSubmitting(false);
-            alert(JSON.stringify(values, null, 2));
-          }, 500);
+          setSubmitting(false);
+          setPolicy(generator(values));
         }}
       >
         {({ submitForm, isSubmitting, values }) => (
@@ -299,21 +297,15 @@ export default function Form() {
 
               <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
                 <Grid item>
-                  <Button className={classes.button} variant="contained" size="small" startIcon={<FileCopyIcon />}>
-                    Copy
-                  </Button>
-                </Grid>
-
-                <Grid item>
                   <Button
                     className={classes.button}
                     variant="contained"
                     size="small"
                     disabled={isSubmitting}
                     onClick={submitForm}
-                    startIcon={<GetAppIcon />}
+                    startIcon={<BuildIcon />}
                   >
-                    download
+                    Generate
                   </Button>
                 </Grid>
               </Grid>
