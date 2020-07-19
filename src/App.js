@@ -1,6 +1,8 @@
-import React from 'react';
-import { Typography, Grid, Box } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Typography, Grid, Box, Button } from '@material-ui/core';
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import ReactJson from 'react-json-view';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 import Form from './components/Form';
 
 const fontFamilyMetropolis = {
@@ -73,6 +75,11 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
+  const [policy, setPolicy] = useState(null);
+
+  const copyHandler = () => {
+    navigator.clipboard.writeText(JSON.stringify(policy, null, 2));
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -86,14 +93,44 @@ function App() {
         </header>
         <Grid container>
           <Grid item md={4} xs={12}>
-            <Form />
+            <Form setPolicy={setPolicy} />
           </Grid>
 
           <Grid item md={8} xs={12}>
             <Box m={2}>
-              <Typography variant="subtitle1" component="h2" className={classes.subheading}>
-                Generated Code Here
-              </Typography>
+              <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
+                <Grid item>
+                  <Typography variant="h6" component="h2" className={classes.subheading}>
+                    Generated Policy
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    size="small"
+                    startIcon={<FileCopyIcon />}
+                    onClick={copyHandler}
+                  >
+                    Copy to Clipboard
+                  </Button>
+                </Grid>
+              </Grid>
+
+              {policy && <ReactJson src={policy} name={false} />}
+              <Box mt={2}>
+                {policy && (
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    size="small"
+                    startIcon={<FileCopyIcon />}
+                    onClick={copyHandler}
+                  >
+                    Copy to Clipboard
+                  </Button>
+                )}
+              </Box>
             </Box>
           </Grid>
         </Grid>
