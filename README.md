@@ -1,6 +1,6 @@
 # Serverless Permission Policy Generator
 
-An Online Application to generate AWS IAM permissions to deploy Serverless Framework in you cloud.
+An Online Application to generate AWS IAM permissions required for deploying a Serverless Framework stack.
 
 <img src="https://github.com/Open-SL/serverless-permission-generator/blob/master/images/serverless-policy-generator.png" width="800" height="400">
 
