@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Button, Box, makeStyles } from '@material-ui/core';
+import { Typography, Grid, Button, Box, makeStyles, FormHelperText } from '@material-ui/core';
 import BuildIcon from '@material-ui/icons/Build';
 import { Formik, Form as FormikForm, Field } from 'formik';
 import { TextField, Checkbox } from 'formik-material-ui';
@@ -26,6 +26,9 @@ const useStyles = makeStyles({
   },
   fieldTitle2: {
     fontWeight: '600',
+  },
+  helperText: {
+    color: '#f02e2e',
   },
 });
 
@@ -61,7 +64,7 @@ export default function Form({ setPolicy }) {
           setPolicy(generator(values));
         }}
       >
-        {({ submitForm, isSubmitting, values }) => (
+        {({ submitForm, isSubmitting, values, errors }) => (
           <FormikForm>
             <Box m={2}>
               <Typography variant="h6" component="h2" className={classes.subheading}>
@@ -165,6 +168,7 @@ export default function Form({ setPolicy }) {
                     inputProps={{ 'aria-label': 's3 checkbox' }}
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
@@ -172,6 +176,14 @@ export default function Form({ setPolicy }) {
                     arrayName="s3Array"
                     resourceAddLabel="add bucket"
                   />
+                </Grid>
+
+                <Grid item xs={12}>
+                {errors.isS3Required && (
+                  <>
+                    <FormHelperText className={classes.helperText}>{errors.isS3Required}</FormHelperText>
+                  </>
+                )}
                 </Grid>
               </Grid>
 
@@ -189,6 +201,7 @@ export default function Form({ setPolicy }) {
                     inputProps={{ 'aria-label': 'dynamoDB checkbox' }}
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
@@ -196,6 +209,13 @@ export default function Form({ setPolicy }) {
                     arrayName="dynamoDbArray"
                     resourceAddLabel="add db"
                   />
+                </Grid>
+
+                
+                <Grid item xs={12}>
+                {errors.isDynamoDbRequired && (
+                  <FormHelperText className={classes.helperText}>{errors.isDynamoDbRequired}</FormHelperText>
+                )}
                 </Grid>
               </Grid>
 
@@ -213,6 +233,7 @@ export default function Form({ setPolicy }) {
                     inputProps={{ 'aria-label': 'sns checkbox' }}
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
@@ -220,6 +241,13 @@ export default function Form({ setPolicy }) {
                     arrayName="snsArray"
                     resourceAddLabel="add topic"
                   />
+                </Grid>
+
+                
+                <Grid item xs={12}>
+                {errors.isSnsRequired && (
+                  <FormHelperText className={classes.helperText}>{errors.isSnsRequired}</FormHelperText>
+                )}
                 </Grid>
               </Grid>
 
@@ -237,6 +265,7 @@ export default function Form({ setPolicy }) {
                     inputProps={{ 'aria-label': 'alb checkbox' }}
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
@@ -244,6 +273,12 @@ export default function Form({ setPolicy }) {
                     arrayName="albArray"
                     resourceAddLabel="add listener"
                   />
+                </Grid>
+
+                <Grid item xs={12}>
+                {errors.isAlbRequired && (
+                  <FormHelperText className={classes.helperText}>{errors.isAlbRequired}</FormHelperText>
+                )}
                 </Grid>
               </Grid>
 
@@ -261,6 +296,7 @@ export default function Form({ setPolicy }) {
                     inputProps={{ 'aria-label': 'security checkbox' }}
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
@@ -268,6 +304,12 @@ export default function Form({ setPolicy }) {
                     arrayName="kinesisArray"
                     resourceAddLabel="add stream"
                   />
+                </Grid>
+
+                <Grid item xs ={12}>
+                {errors.isKinesisRequired && (
+                  <FormHelperText className={classes.helperText}>{errors.isKinesisRequired}</FormHelperText>
+                )}
                 </Grid>
               </Grid>
 
@@ -285,6 +327,7 @@ export default function Form({ setPolicy }) {
                     inputProps={{ 'aria-label': 'security checkbox' }}
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <ResourcesArray
                     values={values}
@@ -292,6 +335,12 @@ export default function Form({ setPolicy }) {
                     arrayName="sqsArray"
                     resourceAddLabel="add queue"
                   />
+                </Grid>
+
+                <Grid item xs ={12}>
+                  {errors.isSqsRequired && (
+                    <FormHelperText className={classes.helperText}>{errors.isSqsRequired}</FormHelperText>
+                  )}
                 </Grid>
               </Grid>
 
