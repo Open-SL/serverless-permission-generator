@@ -106,6 +106,7 @@ const apiGWGenerator = () => {
     Effect: 'Allow',
     Action: ['apigateway:GET', 'apigateway:POST', 'apigateway:PUT', 'apigateway:DELETE', 'apigateway:PATCH'],
     Resource: [
+      'arn:aws:apigateway:*::/apis*',
       'arn:aws:apigateway:*::/restapis*',
       'arn:aws:apigateway:*::/apikeys*',
       'arn:aws:apigateway:*::/usageplans*',
