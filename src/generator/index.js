@@ -114,6 +114,21 @@ const apiGWGenerator = () => {
   };
 };
 
+// parameter store access
+const ssmGenerator = () => {
+  return {
+    Effect: 'Allow',
+    Action: [
+      'ssm:DescribeParameters',
+      'ssm:GetParameter',
+      'ssm:GetParameters',
+      'ssm:GetParametersByPath',
+      'kms:Decrypt',
+    ],
+    Resource: ['*'],
+  };
+};
+
 const generator = ({
   projectName,
   accountId,
@@ -133,6 +148,7 @@ const generator = ({
   kinesisArray,
   isDynamoDbRequired,
   dynamoDbArray,
+  isSsmRequired
 }) => {
   return {
     Version: '2012-10-17',
@@ -241,6 +257,7 @@ const generator = ({
       isSqsRequired && sqsGenerator(sqsArray),
       isKinesisRequired && kinesisGenerator(kinesisArray),
       isDynamoDbRequired && dynamoDBGenerator(dynamoDbArray, accountId),
+      isSsmRequired && ssmGenerator()
     ].filter((property) => property),
   };
 };
