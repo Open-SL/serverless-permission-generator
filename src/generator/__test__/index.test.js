@@ -43,6 +43,7 @@ test('generating minimum policy', () => {
           's3:PutAccelerateConfiguration',
           's3:GetEncryptionConfiguration',
           's3:PutEncryptionConfiguration',
+          's3:DeleteBucketPolicy'
         ],
         Resource: [`arn:aws:s3:::${projectName}*serverlessdeploy*`],
       },
