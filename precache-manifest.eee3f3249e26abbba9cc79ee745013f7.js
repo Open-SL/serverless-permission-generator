@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c620a45254a240ef0e3e34095ed2c76e",
+    "revision": "d365df43da07022c030b37a02c5a24fc",
     "url": "/serverless-permission-generator/index.html"
   },
   {
-    "revision": "3cf3a2b1a1cad3da44c3",
+    "revision": "c6c2304155bff8428a42",
     "url": "/serverless-permission-generator/static/css/2.cb75adce.chunk.css"
   },
   {
-    "revision": "268063bccd814b3af3bf",
+    "revision": "8ff7ee3aba3d3f6d5129",
     "url": "/serverless-permission-generator/static/css/main.5ecd60fb.chunk.css"
   },
   {
-    "revision": "3cf3a2b1a1cad3da44c3",
-    "url": "/serverless-permission-generator/static/js/2.59c27a76.chunk.js"
+    "revision": "c6c2304155bff8428a42",
+    "url": "/serverless-permission-generator/static/js/2.0fd939cf.chunk.js"
   },
   {
     "revision": "e2896a34bc173bbd7b6d83453e91d5e1",
-    "url": "/serverless-permission-generator/static/js/2.59c27a76.chunk.js.LICENSE.txt"
+    "url": "/serverless-permission-generator/static/js/2.0fd939cf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "268063bccd814b3af3bf",
-    "url": "/serverless-permission-generator/static/js/main.7dac3755.chunk.js"
+    "revision": "8ff7ee3aba3d3f6d5129",
+    "url": "/serverless-permission-generator/static/js/main.174d9fb4.chunk.js"
   },
   {
     "revision": "3832cb415a30ab55e0c2",
