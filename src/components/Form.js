@@ -51,6 +51,7 @@ export default function Form({ setPolicy }) {
           isKinesisRequired: false,
           isAlbRequired: false,
           isDynamoDbRequired: false,
+          isSsmRequired: false,
           s3Array: [],
           dynamoDbArray: [],
           sqsArray: [],
@@ -133,7 +134,7 @@ export default function Form({ setPolicy }) {
                     component={Checkbox}
                     type="checkbox"
                     name="isApiGWRequired"
-                    inputProps={{ 'aria-label': 'security checkbox' }}
+                    inputProps={{ 'aria-label': 'api gateway checkbox' }}
                   />
                 </Grid>
               </Grid>
@@ -149,7 +150,23 @@ export default function Form({ setPolicy }) {
                     component={Checkbox}
                     type="checkbox"
                     name="isSgRequired"
-                    inputProps={{ 'aria-label': 'security checkbox' }}
+                    inputProps={{ 'aria-label': 'security group checkbox' }}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
+                <Grid item xs={8}>
+                  <Typography variant="subtitle1" className={classes.fieldTitle}>
+                    Parameter Store
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isSsmRequired"
+                    inputProps={{ 'aria-label': 'parameter store access checkbox' }}
                   />
                 </Grid>
               </Grid>
@@ -293,7 +310,7 @@ export default function Form({ setPolicy }) {
                     component={Checkbox}
                     type="checkbox"
                     name="isKinesisRequired"
-                    inputProps={{ 'aria-label': 'security checkbox' }}
+                    inputProps={{ 'aria-label': 'kinesis checkbox' }}
                   />
                 </Grid>
 
@@ -324,7 +341,7 @@ export default function Form({ setPolicy }) {
                     component={Checkbox}
                     type="checkbox"
                     name="isSqsRequired"
-                    inputProps={{ 'aria-label': 'security checkbox' }}
+                    inputProps={{ 'aria-label': 'sqs checkbox' }}
                   />
                 </Grid>
 
