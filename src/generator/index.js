@@ -12,6 +12,7 @@ const s3Generator = (bucketNames) => {
       's3:PutAccelerateConfiguration',
       's3:GetEncryptionConfiguration',
       's3:PutEncryptionConfiguration',
+      's3:DeleteBucketPolicy'
     ],
     Resource: bucketNames.map((bucketName) => `arn:aws:s3:::${bucketName}`),
   };
@@ -171,6 +172,7 @@ const generator = ({
           's3:PutAccelerateConfiguration',
           's3:GetEncryptionConfiguration',
           's3:PutEncryptionConfiguration',
+          's3:DeleteBucketPolicy'
         ],
         Resource: [`arn:aws:s3:::${projectName}*serverlessdeploy*`],
       },
