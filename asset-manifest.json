@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/serverless-permission-generator/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/serverless-permission-generator/static/js/main.174d9fb4.chunk.js",
-    "main.js.map": "/serverless-permission-generator/static/js/main.174d9fb4.chunk.js.map",
+    "main.js": "/serverless-permission-generator/static/js/main.dc4afac4.chunk.js",
+    "main.js.map": "/serverless-permission-generator/static/js/main.dc4afac4.chunk.js.map",
     "runtime-main.js": "/serverless-permission-generator/static/js/runtime-main.b4a98222.js",
     "runtime-main.js.map": "/serverless-permission-generator/static/js/runtime-main.b4a98222.js.map",
     "static/css/2.cb75adce.chunk.css": "/serverless-permission-generator/static/css/2.cb75adce.chunk.css",
     "static/js/2.0fd939cf.chunk.js": "/serverless-permission-generator/static/js/2.0fd939cf.chunk.js",
     "static/js/2.0fd939cf.chunk.js.map": "/serverless-permission-generator/static/js/2.0fd939cf.chunk.js.map",
     "index.html": "/serverless-permission-generator/index.html",
-    "precache-manifest.eee3f3249e26abbba9cc79ee745013f7.js": "/serverless-permission-generator/precache-manifest.eee3f3249e26abbba9cc79ee745013f7.js",
+    "precache-manifest.52d8a13a6b93fe4c191e181a4a96cab4.js": "/serverless-permission-generator/precache-manifest.52d8a13a6b93fe4c191e181a4a96cab4.js",
     "service-worker.js": "/serverless-permission-generator/service-worker.js",
     "static/css/2.cb75adce.chunk.css.map": "/serverless-permission-generator/static/css/2.cb75adce.chunk.css.map",
     "static/css/main.5ecd60fb.chunk.css.map": "/serverless-permission-generator/static/css/main.5ecd60fb.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.cb75adce.chunk.css",
     "static/js/2.0fd939cf.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.174d9fb4.chunk.js"
+    "static/js/main.dc4afac4.chunk.js"
   ]
 }
