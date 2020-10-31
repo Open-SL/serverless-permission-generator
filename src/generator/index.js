@@ -1,4 +1,4 @@
-const s3Generator = (bucketNames) => {
+export const s3Generator = (bucketNames) => {
   return {
     Effect: 'Allow',
     Action: [
@@ -18,7 +18,7 @@ const s3Generator = (bucketNames) => {
   };
 };
 
-const kinesisGenerator = (streams) => {
+export const kinesisGenerator = (streams) => {
   return {
     Effect: 'Allow',
     Action: 'kinesis:*',
@@ -26,7 +26,7 @@ const kinesisGenerator = (streams) => {
   };
 };
 
-const sqsGenerator = (queueArray) => {
+export const sqsGenerator = (queueArray) => {
   return {
     Effect: 'Allow',
     Action: 'sqs:*',
@@ -35,7 +35,7 @@ const sqsGenerator = (queueArray) => {
 };
 
 // when attaching ALBs instead of API gateways
-const albGenerator = (albs) => {
+export const albGenerator = (albs) => {
   return {
     Effect: 'Allow',
     Action: [
@@ -60,7 +60,7 @@ const albGenerator = (albs) => {
 
 // TODO: fix all access
 // sg attach and VPC attach to lambda
-const sgGenerator = (sGroups) => {
+export const sgGenerator = (sGroups) => {
   return {
     Effect: 'Allow',
     Action: [
@@ -86,7 +86,7 @@ const sgGenerator = (sGroups) => {
   };
 };
 
-const dynamoDBGenerator = (dbs, account) => {
+export const dynamoDBGenerator = (dbs, account) => {
   return {
     Effect: 'Allow',
     Action: ['dynamodb:*'],
@@ -94,7 +94,7 @@ const dynamoDBGenerator = (dbs, account) => {
   };
 };
 
-const snsGenerator = (topics, region, account) => {
+export const snsGenerator = (topics, region, account) => {
   return {
     Effect: 'Allow',
     Action: ['sns:*'],
@@ -102,7 +102,7 @@ const snsGenerator = (topics, region, account) => {
   };
 };
 
-const apiGWGenerator = () => {
+export const apiGWGenerator = () => {
   return {
     Effect: 'Allow',
     Action: ['apigateway:GET', 'apigateway:POST', 'apigateway:PUT', 'apigateway:DELETE', 'apigateway:PATCH'],
@@ -116,7 +116,7 @@ const apiGWGenerator = () => {
 };
 
 // parameter store access
-const ssmGenerator = () => {
+export const ssmGenerator = () => {
   return {
     Effect: 'Allow',
     Action: [
