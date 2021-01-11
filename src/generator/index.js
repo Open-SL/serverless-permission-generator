@@ -115,6 +115,82 @@ export const apiGWGenerator = () => {
   };
 };
 
+// TODO: can we determine the hosted zone id or do we ask the user for it?  What about calls to `create_domain`?
+export const domainManagerGenerator = (region, account, useRoute53 = false) => {
+  return [
+    {
+      Effect: 'Allow',
+      Action: ['acm:ListCertificates'],
+      Resource: [
+        '*',
+      ],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:GET', 'apigateway:DELETE'],
+      Resource: [
+        `arn:aws:apigateway:${region}:${account}:/domainnames/*`,
+      ],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:GET', 'apigateway:POST'],
+      Resource: [
+        `arn:aws:apigateway:${region}:${account}:/domainnames/*/basepathmappings`,
+      ],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:PATCH'],
+      Resource: [
+        `arn:aws:apigateway:${region}:${account}:/domainnames/*/basepathmapping`,
+      ],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:POST'],
+      Resource: [
+        `arn:aws:apigateway:${region}:${account}:/domainnames`,
+      ],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['cloudformation:GET'],
+      Resource: [
+        '*',
+      ],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['cloudfront:UpdateDistribution'],
+      Resource: [
+        '*',
+      ],
+    },
+    useRoute53 && {
+      Effect: 'Allow',
+      Action: ['route53:ListHostedZones', 'route53:GetHostedZone', 'route53:ListResourceRecordSets'],
+      Resource: [
+        '*',
+      ],
+    },
+    useRoute53 && {
+      Effect: 'Allow',
+      Action: ['route53:ChangeResourceRecordSets'],
+      Resource: [
+        `arn:aws:route53:::hostedzone/*`,
+      ],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['iam:CreateServiceLinkedRole'],
+      Resource: [
+        `arn:aws:iam:::role/aws-service-role/ops.apigateway.amazonaws.com/AWSServiceRoleForAPIGateway`,
+      ],
+    }
+  ].filter((property) => property);
+};
+
 // parameter store access
 export const ssmGenerator = () => {
   return {
@@ -149,7 +225,9 @@ const generator = ({
   kinesisArray,
   isDynamoDbRequired,
   dynamoDbArray,
-  isSsmRequired
+  isSsmRequired,
+  isDomainManagerRequired,
+  isDomainManagerRoute53Required
 }) => {
   return {
     Version: '2012-10-17',
@@ -259,8 +337,9 @@ const generator = ({
       isSqsRequired && sqsGenerator(sqsArray),
       isKinesisRequired && kinesisGenerator(kinesisArray),
       isDynamoDbRequired && dynamoDBGenerator(dynamoDbArray, accountId),
-      isSsmRequired && ssmGenerator()
-    ].filter((property) => property),
+      isSsmRequired && ssmGenerator(),
+      isDomainManagerRequired && domainManagerGenerator(region, accountId, isDomainManagerRoute53Required),
+    ].flat().filter((property) => property),
   };
 };
 
