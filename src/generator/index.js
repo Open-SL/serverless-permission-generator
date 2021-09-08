@@ -12,7 +12,7 @@ export const s3Generator = (bucketNames) => {
       's3:PutAccelerateConfiguration',
       's3:GetEncryptionConfiguration',
       's3:PutEncryptionConfiguration',
-      's3:DeleteBucketPolicy'
+      's3:DeleteBucketPolicy',
     ],
     Resource: bucketNames.map((bucketName) => `arn:aws:s3:::${bucketName}`),
   };
@@ -26,12 +26,22 @@ export const kinesisGenerator = (streams) => {
   };
 };
 
-export const sqsGenerator = (queueArray) => {
-  return {
-    Effect: 'Allow',
-    Action: 'sqs:*',
-    Resource: queueArray.map((queue) => `arn:aws:sqs:*:${queue}`),
-  };
+export const sqsGenerator = (queueArray, region, account) => {
+  return [
+    {
+      Effect: 'Allow',
+      Action: 'sqs:*',
+      Resource: queueArray.map((queue) => `arn:aws:sqs:*:${queue}`),
+    },
+    {
+      Effect: 'Allow',
+      Action: 'logs:PutSubscriptionFilter',
+      Resource: [
+        `arn:aws:logs:${region}:${account}:log-group:/aws/lambda/*`,
+        `arn:aws:logs:${region}:${account}:log-group:/aws/api-gateway/*`,
+      ],
+    },
+  ];
 };
 
 // when attaching ALBs instead of API gateways
@@ -121,73 +131,53 @@ export const domainManagerGenerator = (region, account, useRoute53 = false) => {
     {
       Effect: 'Allow',
       Action: ['acm:ListCertificates'],
-      Resource: [
-        '*',
-      ],
+      Resource: ['*'],
     },
     {
       Effect: 'Allow',
       Action: ['apigateway:GET', 'apigateway:DELETE'],
-      Resource: [
-        `arn:aws:apigateway:${region}:${account}:/domainnames/*`,
-      ],
+      Resource: [`arn:aws:apigateway:${region}:${account}:/domainnames/*`],
     },
     {
       Effect: 'Allow',
       Action: ['apigateway:GET', 'apigateway:POST'],
-      Resource: [
-        `arn:aws:apigateway:${region}:${account}:/domainnames/*/basepathmappings`,
-      ],
+      Resource: [`arn:aws:apigateway:${region}:${account}:/domainnames/*/basepathmappings`],
     },
     {
       Effect: 'Allow',
       Action: ['apigateway:PATCH'],
-      Resource: [
-        `arn:aws:apigateway:${region}:${account}:/domainnames/*/basepathmapping`,
-      ],
+      Resource: [`arn:aws:apigateway:${region}:${account}:/domainnames/*/basepathmapping`],
     },
     {
       Effect: 'Allow',
       Action: ['apigateway:POST'],
-      Resource: [
-        `arn:aws:apigateway:${region}:${account}:/domainnames`,
-      ],
+      Resource: [`arn:aws:apigateway:${region}:${account}:/domainnames`],
     },
     {
       Effect: 'Allow',
       Action: ['cloudformation:GET'],
-      Resource: [
-        '*',
-      ],
+      Resource: ['*'],
     },
     {
       Effect: 'Allow',
       Action: ['cloudfront:UpdateDistribution'],
-      Resource: [
-        '*',
-      ],
+      Resource: ['*'],
     },
     useRoute53 && {
       Effect: 'Allow',
       Action: ['route53:ListHostedZones', 'route53:GetHostedZone', 'route53:ListResourceRecordSets'],
-      Resource: [
-        '*',
-      ],
+      Resource: ['*'],
     },
     useRoute53 && {
       Effect: 'Allow',
       Action: ['route53:ChangeResourceRecordSets'],
-      Resource: [
-        `arn:aws:route53:::hostedzone/*`,
-      ],
+      Resource: [`arn:aws:route53:::hostedzone/*`],
     },
     {
       Effect: 'Allow',
       Action: ['iam:CreateServiceLinkedRole'],
-      Resource: [
-        `arn:aws:iam:::role/aws-service-role/ops.apigateway.amazonaws.com/AWSServiceRoleForAPIGateway`,
-      ],
-    }
+      Resource: [`arn:aws:iam:::role/aws-service-role/ops.apigateway.amazonaws.com/AWSServiceRoleForAPIGateway`],
+    },
   ].filter((property) => property);
 };
 
@@ -227,7 +217,7 @@ const generator = ({
   dynamoDbArray,
   isSsmRequired,
   isDomainManagerRequired,
-  isDomainManagerRoute53Required
+  isDomainManagerRoute53Required,
 }) => {
   return {
     Version: '2012-10-17',
@@ -266,7 +256,7 @@ const generator = ({
           's3:PutAccelerateConfiguration',
           's3:GetEncryptionConfiguration',
           's3:PutEncryptionConfiguration',
-          's3:DeleteBucketPolicy'
+          's3:DeleteBucketPolicy',
         ],
         Resource: [`arn:aws:s3:::${projectName}*serverlessdeploy*`],
       },
@@ -288,7 +278,6 @@ const generator = ({
         ],
         Resource: [`arn:aws:lambda:${region}:${accountId}:function:${projectName}-${stage}-*`],
       },
-
       {
         Effect: 'Allow',
         Action: ['cloudwatch:GetMetricStatistics'],
@@ -334,12 +323,14 @@ const generator = ({
       isApiGWRequired && apiGWGenerator(),
       isSgRequired && sgGenerator(),
       isAlbRequired && albGenerator(albArray),
-      isSqsRequired && sqsGenerator(sqsArray),
+      isSqsRequired && sqsGenerator(sqsArray, region, accountId),
       isKinesisRequired && kinesisGenerator(kinesisArray),
       isDynamoDbRequired && dynamoDBGenerator(dynamoDbArray, accountId),
       isSsmRequired && ssmGenerator(),
       isDomainManagerRequired && domainManagerGenerator(region, accountId, isDomainManagerRoute53Required),
-    ].flat().filter((property) => property),
+    ]
+      .flat()
+      .filter((property) => property),
   };
 };
 
