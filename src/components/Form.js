@@ -46,6 +46,8 @@ export default function Form({ setPolicy }) {
           isS3Required: false,
           isSnsRequired: false,
           isSqsRequired: false,
+          isDomainManagerRequired: false,
+          isDomainManagerRoute53Required: false,
           isApiGWRequired: false,
           isSgRequired: false,
           isKinesisRequired: false,
@@ -359,6 +361,44 @@ export default function Form({ setPolicy }) {
                     <FormHelperText className={classes.helperText}>{errors.isSqsRequired}</FormHelperText>
                   )}
                 </Grid>
+              </Grid>
+
+              <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
+                <Grid item xs={8}>
+                  <Typography variant="subtitle1" className={classes.fieldTitle}>
+                    Serverless Domain Manager
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isDomainManagerRequired"
+                    inputProps={{ 'aria-label': 'sqs checkbox' }}
+                  />
+                </Grid>
+
+                {values.isDomainManagerRequired && <>
+                  <Grid item xs={6}>
+                    <Typography variant="subtitle1" className={classes.fieldTitle}>
+                      Allow Route53
+                  </Typography>
+                  </Grid>
+                  <Grid item xs>
+                    <Field
+                      component={Checkbox}
+                      type="checkbox"
+                      name="isDomainManagerRoute53Required"
+                      inputProps={{ 'aria-label': 'sqs checkbox' }}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    {errors.isDomainManagerRoute53Required && (
+                      <FormHelperText className={classes.helperText}>{errors.isDomainManagerRoute53Required}</FormHelperText>
+                    )}
+                  </Grid></>
+                }
               </Grid>
 
               <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
