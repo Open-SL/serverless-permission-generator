@@ -149,11 +149,21 @@ test('generating kinesis policy ', () => {
 });
 
 test('generating sqs policy ', () => {
-  expect(sqsGenerator(['testsqs'])).toEqual({
-    Effect: 'Allow',
-    Action: 'sqs:*',
-    Resource: [`arn:aws:sqs:*:testsqs`],
-  });
+  expect(sqsGenerator(['testsqs'], 'region1', '12345')).toEqual([
+    {
+      Effect: 'Allow',
+      Action: 'sqs:*',
+      Resource: [`arn:aws:sqs:*:testsqs`],
+    },
+    {
+      Effect: 'Allow',
+      Action: 'logs:PutSubscriptionFilter',
+      Resource: [
+        `arn:aws:logs:region1:12345:log-group:/aws/lambda/*`,
+        `arn:aws:logs:region1:12345:log-group:/aws/api-gateway/*`,
+      ],
+    },
+  ]);
 });
 
 test('generating albGenerator policy ', () => {
