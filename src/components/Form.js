@@ -60,6 +60,8 @@ export default function Form({ setPolicy }) {
           albArray: [],
           kinesisArray: [],
           snsArray: [],
+          isWarmUpPluginRequired: false,
+          warmUpPluginRuleArray: []
         }}
         validate={validation}
         onSubmit={(values, { setSubmitting }) => {
@@ -399,6 +401,39 @@ export default function Form({ setPolicy }) {
                     )}
                   </Grid></>
                 }
+              </Grid>
+
+              <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
+                <Grid item xs={8}>
+                  <Typography variant="subtitle1" className={classes.fieldTitle}>
+                    Serverless Warm Up Plugin
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isWarmUpPluginRequired"
+                    inputProps={{ 'aria-label': 'warm up checkbox' }}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <ResourcesArray
+                    values={values}
+                    resourceName="isWarmUpPluginRequired"
+                    arrayName="warmUpPluginRuleArray"
+                    resourceAddLabel="add rule"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                {errors.isWarmUpPluginRequired && (
+                  <>
+                    <FormHelperText className={classes.helperText}>{errors.isWarmUpPluginRequired}</FormHelperText>
+                  </>
+                )}
+                </Grid>
               </Grid>
 
               <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
