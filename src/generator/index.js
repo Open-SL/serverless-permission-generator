@@ -181,6 +181,14 @@ export const domainManagerGenerator = (region, account, useRoute53 = false) => {
   ].filter((property) => property);
 };
 
+export const warmupPluginGenerator = (region, account, ruleNames) => {
+  return {
+    Effect: 'Allow',
+    Action: ['events:DescribeRule', 'events:PutRule', 'events:DeleteRule', 'events:PutTargets', 'events:RemoveTargets'],
+    Resource: ruleNames.map((ruleName) => `arn:aws:events:${region}:${account}:rule/${ruleName}`),
+  };
+};
+
 // parameter store access
 export const ssmGenerator = () => {
   return {
@@ -218,6 +226,8 @@ const generator = ({
   isSsmRequired,
   isDomainManagerRequired,
   isDomainManagerRoute53Required,
+  isWarmUpPluginRequired,
+  warmUpPluginRuleArray,
 }) => {
   return {
     Version: '2012-10-17',
@@ -328,6 +338,7 @@ const generator = ({
       isDynamoDbRequired && dynamoDBGenerator(dynamoDbArray, accountId),
       isSsmRequired && ssmGenerator(),
       isDomainManagerRequired && domainManagerGenerator(region, accountId, isDomainManagerRoute53Required),
+      isWarmUpPluginRequired && warmupPluginGenerator(region, accountId, warmUpPluginRuleArray),
     ]
       .flat()
       .filter((property) => property),
