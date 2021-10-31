@@ -1,26 +1,24 @@
 {
   "files": {
-    "main.css": "/serverless-permission-generator/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/serverless-permission-generator/static/js/main.e3d1d116.chunk.js",
-    "main.js.map": "/serverless-permission-generator/static/js/main.e3d1d116.chunk.js.map",
-    "runtime-main.js": "/serverless-permission-generator/static/js/runtime-main.b4a98222.js",
-    "runtime-main.js.map": "/serverless-permission-generator/static/js/runtime-main.b4a98222.js.map",
-    "static/css/2.cb75adce.chunk.css": "/serverless-permission-generator/static/css/2.cb75adce.chunk.css",
-    "static/js/2.8005697d.chunk.js": "/serverless-permission-generator/static/js/2.8005697d.chunk.js",
-    "static/js/2.8005697d.chunk.js.map": "/serverless-permission-generator/static/js/2.8005697d.chunk.js.map",
+    "main.css": "/serverless-permission-generator/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/serverless-permission-generator/static/js/main.22c9797c.chunk.js",
+    "main.js.map": "/serverless-permission-generator/static/js/main.22c9797c.chunk.js.map",
+    "runtime-main.js": "/serverless-permission-generator/static/js/runtime-main.841031e0.js",
+    "runtime-main.js.map": "/serverless-permission-generator/static/js/runtime-main.841031e0.js.map",
+    "static/css/2.127bf83f.chunk.css": "/serverless-permission-generator/static/css/2.127bf83f.chunk.css",
+    "static/js/2.14437798.chunk.js": "/serverless-permission-generator/static/js/2.14437798.chunk.js",
+    "static/js/2.14437798.chunk.js.map": "/serverless-permission-generator/static/js/2.14437798.chunk.js.map",
     "index.html": "/serverless-permission-generator/index.html",
-    "precache-manifest.54d87e8bf7559b793dd5dc9c7c72f6b8.js": "/serverless-permission-generator/precache-manifest.54d87e8bf7559b793dd5dc9c7c72f6b8.js",
-    "service-worker.js": "/serverless-permission-generator/service-worker.js",
-    "static/css/2.cb75adce.chunk.css.map": "/serverless-permission-generator/static/css/2.cb75adce.chunk.css.map",
-    "static/css/main.5ecd60fb.chunk.css.map": "/serverless-permission-generator/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.8005697d.chunk.js.LICENSE.txt": "/serverless-permission-generator/static/js/2.8005697d.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/serverless-permission-generator/static/media/roboto-latin-900-normal.bb1e4dc6.woff"
+    "static/css/2.127bf83f.chunk.css.map": "/serverless-permission-generator/static/css/2.127bf83f.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/serverless-permission-generator/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.14437798.chunk.js.LICENSE.txt": "/serverless-permission-generator/static/js/2.14437798.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/serverless-permission-generator/static/media/roboto-latin-900-normal.bac8362e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.b4a98222.js",
-    "static/css/2.cb75adce.chunk.css",
-    "static/js/2.8005697d.chunk.js",
-    "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.e3d1d116.chunk.js"
+    "static/js/runtime-main.841031e0.js",
+    "static/css/2.127bf83f.chunk.css",
+    "static/js/2.14437798.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.22c9797c.chunk.js"
   ]
 }
