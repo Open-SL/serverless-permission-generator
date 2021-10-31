@@ -9,6 +9,7 @@ import generator, {
   apiGWGenerator,
   ssmGenerator,
   warmupPluginGenerator,
+  domainManagerGenerator,
 } from '..';
 
 test('generating minimum policy', () => {
@@ -264,4 +265,104 @@ test('generating warm up plugin policy ', () => {
     Action: ['events:DescribeRule', 'events:PutRule', 'events:DeleteRule', 'events:PutTargets', 'events:RemoveTargets'],
     Resource: [`arn:aws:events:region:account:rule/rule1`],
   });
+});
+
+test('domainManagerGenerator policy - route53 (false) ', () => {
+  expect(domainManagerGenerator('region', 'account', false)).toEqual([
+    {
+      Effect: 'Allow',
+      Action: ['acm:ListCertificates'],
+      Resource: ['*'],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:GET', 'apigateway:DELETE'],
+      Resource: [`arn:aws:apigateway:region:account:/domainnames/*`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:GET', 'apigateway:POST'],
+      Resource: [`arn:aws:apigateway:region:account:/domainnames/*/basepathmappings`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:PATCH'],
+      Resource: [`arn:aws:apigateway:region:account:/domainnames/*/basepathmapping`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:POST'],
+      Resource: [`arn:aws:apigateway:region:account:/domainnames`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['cloudformation:GET'],
+      Resource: ['*'],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['cloudfront:UpdateDistribution'],
+      Resource: ['*'],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['iam:CreateServiceLinkedRole'],
+      Resource: [`arn:aws:iam:::role/aws-service-role/ops.apigateway.amazonaws.com/AWSServiceRoleForAPIGateway`],
+    },
+  ]);
+});
+
+test('domainManagerGenerator policy - route53 (true) ', () => {
+  expect(domainManagerGenerator('region', 'account', true)).toEqual([
+    {
+      Effect: 'Allow',
+      Action: ['acm:ListCertificates'],
+      Resource: ['*'],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:GET', 'apigateway:DELETE'],
+      Resource: [`arn:aws:apigateway:region:account:/domainnames/*`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:GET', 'apigateway:POST'],
+      Resource: [`arn:aws:apigateway:region:account:/domainnames/*/basepathmappings`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:PATCH'],
+      Resource: [`arn:aws:apigateway:region:account:/domainnames/*/basepathmapping`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['apigateway:POST'],
+      Resource: [`arn:aws:apigateway:region:account:/domainnames`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['cloudformation:GET'],
+      Resource: ['*'],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['cloudfront:UpdateDistribution'],
+      Resource: ['*'],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['route53:ListHostedZones', 'route53:GetHostedZone', 'route53:ListResourceRecordSets'],
+      Resource: ['*'],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['route53:ChangeResourceRecordSets'],
+      Resource: [`arn:aws:route53:::hostedzone/*`],
+    },
+    {
+      Effect: 'Allow',
+      Action: ['iam:CreateServiceLinkedRole'],
+      Resource: [`arn:aws:iam:::role/aws-service-role/ops.apigateway.amazonaws.com/AWSServiceRoleForAPIGateway`],
+    },
+  ]);
 });
