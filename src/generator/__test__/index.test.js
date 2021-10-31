@@ -8,6 +8,7 @@ import generator, {
   snsGenerator,
   apiGWGenerator,
   ssmGenerator,
+  warmupPluginGenerator,
 } from '..';
 
 test('generating minimum policy', () => {
@@ -254,5 +255,13 @@ test('generating ssm policy ', () => {
       'kms:Decrypt',
     ],
     Resource: ['*'],
+  });
+});
+
+test('generating warm up plugin policy ', () => {
+  expect(warmupPluginGenerator('region', 'account', ['rule1'])).toEqual({
+    Effect: 'Allow',
+    Action: ['events:DescribeRule', 'events:PutRule', 'events:DeleteRule', 'events:PutTargets', 'events:RemoveTargets'],
+    Resource: [`arn:aws:events:region:account:rule/rule1`],
   });
 });
