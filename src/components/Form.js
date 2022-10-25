@@ -54,6 +54,7 @@ export default function Form({ setPolicy }) {
           isAlbRequired: false,
           isDynamoDbRequired: false,
           isSsmRequired: false,
+          isEsmEnabled: false,
           s3Array: [],
           dynamoDbArray: [],
           sqsArray: [],
