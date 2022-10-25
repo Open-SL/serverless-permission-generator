@@ -54,6 +54,7 @@ export default function Form({ setPolicy }) {
           isAlbRequired: false,
           isDynamoDbRequired: false,
           isSsmRequired: false,
+          isEsmEnabled: false,
           s3Array: [],
           dynamoDbArray: [],
           sqsArray: [],
@@ -171,6 +172,22 @@ export default function Form({ setPolicy }) {
                     type="checkbox"
                     name="isSsmRequired"
                     inputProps={{ 'aria-label': 'parameter store access checkbox' }}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
+                <Grid item xs={8}>
+                  <Typography variant="subtitle1" className={classes.fieldTitle}>
+                    Enable event source mapping
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isEsmEnabled"
+                    inputProps={{ 'aria-label': 'event source mapping checkbox' }}
                   />
                 </Grid>
               </Grid>

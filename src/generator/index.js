@@ -204,6 +204,15 @@ export const ssmGenerator = () => {
   };
 };
 
+// event source mapping permission
+export const esmGenerator = () => {
+  return {
+    Effect: 'Allow',
+    Action: "lambda:CreateEventSourceMapping",
+    Resource: '*',
+  };
+};
+
 const generator = ({
   projectName,
   accountId,
@@ -224,6 +233,7 @@ const generator = ({
   isDynamoDbRequired,
   dynamoDbArray,
   isSsmRequired,
+  isEsmEnabled,
   isDomainManagerRequired,
   isDomainManagerRoute53Required,
   isWarmUpPluginRequired,
@@ -337,6 +347,7 @@ const generator = ({
       isKinesisRequired && kinesisGenerator(kinesisArray),
       isDynamoDbRequired && dynamoDBGenerator(dynamoDbArray, accountId),
       isSsmRequired && ssmGenerator(),
+      isEsmEnabled && esmGenerator(),
       isDomainManagerRequired && domainManagerGenerator(region, accountId, isDomainManagerRoute53Required),
       isWarmUpPluginRequired && warmupPluginGenerator(region, accountId, warmUpPluginRuleArray),
     ]
