@@ -10,6 +10,7 @@ import generator, {
   ssmGenerator,
   warmupPluginGenerator,
   domainManagerGenerator,
+  esmGenerator,
 } from '..';
 
 test('generating minimum policy', () => {
@@ -365,4 +366,12 @@ test('domainManagerGenerator policy - route53 (true) ', () => {
       Resource: [`arn:aws:iam:::role/aws-service-role/ops.apigateway.amazonaws.com/AWSServiceRoleForAPIGateway`],
     },
   ]);
+});
+
+test('generating esm policy ', () => {
+  expect(esmGenerator()).toEqual({
+    Effect: 'Allow',
+    Action: 'lambda:CreateEventSourceMapping',
+    Resource: '*',
+  });
 });

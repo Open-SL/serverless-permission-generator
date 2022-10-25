@@ -178,6 +178,22 @@ export default function Form({ setPolicy }) {
               <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
                 <Grid item xs={8}>
                   <Typography variant="subtitle1" className={classes.fieldTitle}>
+                    Enable event source mapping
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Field
+                    component={Checkbox}
+                    type="checkbox"
+                    name="isEsmEnabled"
+                    inputProps={{ 'aria-label': 'event source mapping checkbox' }}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
+                <Grid item xs={8}>
+                  <Typography variant="subtitle1" className={classes.fieldTitle}>
                     S3 (Simple Static Storage)
                   </Typography>
                 </Grid>
