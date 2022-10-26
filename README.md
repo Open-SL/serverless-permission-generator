@@ -36,10 +36,13 @@ Visit the application from [here](https://open-sl.github.io/serverless-permissio
 ### Prerequisites
 - git
 - npm
+- nvm (optional)
+- node v16
 
 clone the application and install dependencies using
 
 ```
+nvm use
 npm install
 ```
 
