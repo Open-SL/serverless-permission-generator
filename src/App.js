@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Typography, Grid, Box, Button } from '@material-ui/core';
-import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider, createTheme } from '@material-ui/core/styles';
 import ReactJson from 'react-json-view';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import Form from './components/Form';
@@ -17,7 +17,7 @@ const fontFamilyMetropolis = {
   letterSpacing: '0.015rem',
 };
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     h1: {
       ...fontFamilyMetropolis,
