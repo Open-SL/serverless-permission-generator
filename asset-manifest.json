@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/serverless-permission-generator/static/css/main.4b6fc471.css",
-    "main.js": "/serverless-permission-generator/static/js/main.7cbf5e09.js",
+    "main.js": "/serverless-permission-generator/static/js/main.7ac41fce.js",
     "static/media/roboto-latin-100-italic.ttf": "/serverless-permission-generator/static/media/roboto-latin-100-italic.370619fc61480f2847be.ttf",
     "static/media/roboto-latin-900-italic.ttf": "/serverless-permission-generator/static/media/roboto-latin-900-italic.a62fe1ca095893ca22a8.ttf",
     "static/media/roboto-latin-300-italic.ttf": "/serverless-permission-generator/static/media/roboto-latin-300-italic.574b45dde671c1c6df54.ttf",
@@ -72,10 +72,10 @@
     "static/media/metropolis-300.woff2": "/serverless-permission-generator/static/media/metropolis-300.ddc80a0c42fe32bea515.woff2",
     "index.html": "/serverless-permission-generator/index.html",
     "main.4b6fc471.css.map": "/serverless-permission-generator/static/css/main.4b6fc471.css.map",
-    "main.7cbf5e09.js.map": "/serverless-permission-generator/static/js/main.7cbf5e09.js.map"
+    "main.7ac41fce.js.map": "/serverless-permission-generator/static/js/main.7ac41fce.js.map"
   },
   "entrypoints": [
     "static/css/main.4b6fc471.css",
-    "static/js/main.7cbf5e09.js"
+    "static/js/main.7ac41fce.js"
   ]
 }
